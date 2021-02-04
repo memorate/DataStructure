@@ -14,19 +14,19 @@ public class Array<E> {
     /**
      * Array 最多能容纳元素的个数，初始化时指定
      */
-    private final int maxSize;
+    private final int capacity;
 
     /**
      * 使用链式存储来储存数据
      */
     private final Object[] data;
 
-    public Array(int maxSize) {
-        if (maxSize <= 0) {
+    public Array(int capacity) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException("Array size can not less than 1!");
         } else {
-            this.maxSize = maxSize;
-            this.data = new Object[maxSize];
+            this.capacity = capacity;
+            this.data = new Object[capacity];
             this.size = 0;
         }
     }
@@ -38,7 +38,7 @@ public class Array<E> {
      * @return 若 Array 已满，抛出 OutOfMemoryError；操作成功返回 true
      */
     public boolean add(E element) {
-        rangeCheck(size + 1);
+        outOfBoundary(size + 1);
         data[size++] = element;
         return true;
     }
@@ -51,7 +51,7 @@ public class Array<E> {
      * @return 越界会抛出 IndexOutOfBoundsException；操作成功返回 true
      */
     public boolean set(int index, E element) {
-        rangeCheck(index);
+        outOfBoundary(index);
         data[index] = element;
         return true;
     }
@@ -62,7 +62,7 @@ public class Array<E> {
      * @return 尾部的元素
      */
     public E get() {
-        return element(size - 1);
+        return getElement(size - 1);
     }
 
     /**
@@ -72,20 +72,60 @@ public class Array<E> {
      * @return 越界会抛出 IndexOutOfBoundsException
      */
     public E get(int index) {
-        return element(index);
+        return getElement(index);
     }
 
-    private E element(int index) {
-        rangeCheck(index);
+    /**
+     * 删除 Array 尾部元素
+     *
+     * @return 被删除的元素
+     */
+    public E delete() {
+        return removeElement(size - 1);
+    }
+
+    /**
+     * 删除 Array 中指定 index 的元素
+     *
+     * @param index Array 下标
+     * @return Array 为空会抛出 NullPointerException；
+     *         index 越界会抛出 IndexOutOfBoundsException；
+     *         成功会返回被删除的元素
+     */
+    public E delete(int index) {
+        return removeElement(index);
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    private void outOfBoundary(int index) {
+        if (index < 0 || index >= capacity) {
+            throw new IndexOutOfBoundsException("Index out of boundary!");
+        }
+    }
+
+    private void checkRangeAndEmpty(int index) {
+        outOfBoundary(index);
+        if (isEmpty()) {
+            throw new NullPointerException("Array is empty!");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private E getElement(int index) {
+        checkRangeAndEmpty(index);
         return (E) data[index];
     }
 
-    private void rangeCheck(int index) {
-        if (size == 0 && index == 0) {
-            throw new NullPointerException("Array is empty!");
-        }
-        if (index < 0 || index >= maxSize) {
-            throw new IndexOutOfBoundsException("Index out of boundary!");
-        }
+    @SuppressWarnings("unchecked")
+    private E removeElement(int index) {
+        checkRangeAndEmpty(index);
+        E oldValue = (E) data[index];
+        System.arraycopy(data, index + 1, data, index, size - index - 1);
+        //清除尾部元素，使 GC 进行垃圾回收
+        data[size--] = null;
+        return oldValue;
     }
 }
