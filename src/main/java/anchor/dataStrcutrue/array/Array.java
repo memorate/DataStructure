@@ -1,4 +1,4 @@
-package anchor.data.strcutrue;
+package anchor.dataStrcutrue.array;
 
 /**
  * @author Anchor
