@@ -38,7 +38,7 @@ public class Array<E> {
      * @return 若 Array 已满，抛出 OutOfMemoryError；操作成功返回 true
      */
     public boolean add(E element) {
-        outOfBoundary(size + 1);
+        outOfBoundary(size);
         data[size++] = element;
         return true;
     }
@@ -96,8 +96,26 @@ public class Array<E> {
         return removeElement(index);
     }
 
+    public String display() {
+        if (size == 0) {
+            return "[]";
+        }
+        StringBuilder builder = new StringBuilder("[");
+        for (int i = 0; ; i++) {
+            builder.append(data[i]);
+            if (i == size - 1) {
+                return builder.append("]").toString();
+            }
+            builder.append(",");
+        }
+    }
+
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public int size(){
+        return size;
     }
 
     private void outOfBoundary(int index) {
@@ -125,7 +143,7 @@ public class Array<E> {
         E oldValue = (E) data[index];
         System.arraycopy(data, index + 1, data, index, size - index - 1);
         //清除尾部元素，使 GC 进行垃圾回收
-        data[size--] = null;
+        data[--size] = null;
         return oldValue;
     }
 }
