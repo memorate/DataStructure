@@ -58,5 +58,42 @@ class ArrayTest {
         assertEquals(3, array.size());
     }
 
+    @Test
+    void deleteOob() {
+        array.delete();
+        array.delete();
+        array.delete();
+        array.delete();
+        assertThrows(IndexOutOfBoundsException.class, array::delete);
+    }
 
+    @Test
+    void get() {
+        assertEquals("d", array.get());
+    }
+
+    @Test
+    void getIndex() {
+        assertEquals("b", array.get(1));
+    }
+
+    @Test
+    void getOob() {
+        assertThrows(IndexOutOfBoundsException.class, () -> array.get(-2));
+        assertThrows(IndexOutOfBoundsException.class, () -> array.get(10));
+    }
+
+    @Test
+    void size() {
+        assertEquals(4, array.size());
+        array.add("e");
+        assertEquals(5, array.size());
+    }
+
+    @Test
+    void display() {
+        assertEquals("[a,b,c,d]", array.display());
+        array.add("e");
+        assertEquals("[a,b,c,d,e]", array.display());
+    }
 }
