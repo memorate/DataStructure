@@ -71,6 +71,7 @@ public class LinkedList<E> {
         Node<E> oldLast = this.last;
         this.last = oldLast.pre;
         oldLast.pre.next = null;
+        size--;
         return oldLast.item;
     }
 
@@ -85,6 +86,7 @@ public class LinkedList<E> {
         Node<E> node = getNode(index);
         node.pre.next = node.next;
         node.next.pre = node.pre;
+        size--;
         return node.item;
     }
 
