@@ -91,7 +91,24 @@ public class LinkedList<E> {
     }
 
     /**
-     * 根据下标来获取值
+     * 获取链表中第一个节点的值
+     * @return 首节点的值
+     */
+    public E getFirst() {
+        empty();
+        return first.item;
+    }
+
+    /**
+     * 获取链表中最后一个节点的值
+     * @return 尾节点的值
+     */
+    public E getLast() {
+        return last.item;
+    }
+
+    /**
+     * 根据下标来获取节点的值
      *
      * @param index  下标，从 0 开始
      * @return 下标所指的值
@@ -110,15 +127,31 @@ public class LinkedList<E> {
     }
 
     /**
+     * 以数组的格式展示 LinkedList 中储存的值
+     * @return [0, 1, 2, 3, 4]
+     */
+    public String display() {
+        if (size == 0) {
+            return "[]";
+        }
+        Node<E> n = first;
+        StringBuilder builder = new StringBuilder("[");
+        builder.append(n.item);
+        while (null != n.next) {
+            n = n.next;
+            builder.append(n.item);
+        }
+        return builder.toString();
+    }
+
+    /**
      * 根据下标来获取节点
      *
      * @param index  下标，从 0 开始
      * @return 下标所指的 Node
      */
     private Node<E> getNode(int index) {
-        if (null == first) {
-            throw new NullPointerException("LinkedList is empty!");
-        }
+        empty();
         rangeCheck(index);
         Node<E> n;
         //根据 index 的位置来决定是顺序查还是逆序查
@@ -134,6 +167,12 @@ public class LinkedList<E> {
             }
         }
         return n;
+    }
+
+    private void empty(){
+        if (null == first) {
+            throw new NullPointerException("LinkedList is empty!");
+        }
     }
 
     private void rangeCheck(int index) {
