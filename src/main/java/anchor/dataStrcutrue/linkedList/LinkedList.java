@@ -137,11 +137,13 @@ public class LinkedList<E> {
         Node<E> n = first;
         StringBuilder builder = new StringBuilder("[");
         builder.append(n.item);
-        while (null != n.next) {
+        while (true) {
             n = n.next;
-            builder.append(n.item);
+            builder.append(",").append(n.item);
+            if (null == n.next) {
+                return builder.append("]").toString();
+            }
         }
-        return builder.toString();
     }
 
     /**
@@ -169,7 +171,7 @@ public class LinkedList<E> {
         return n;
     }
 
-    private void empty(){
+    private void empty() {
         if (null == first) {
             throw new NullPointerException("LinkedList is empty!");
         }

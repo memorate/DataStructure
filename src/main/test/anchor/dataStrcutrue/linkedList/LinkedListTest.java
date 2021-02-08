@@ -27,29 +27,35 @@ class LinkedListTest {
 
     @Test
     void testAdd() {
+        list.add(1, "x");
+        assertEquals(5, list.size());
+        assertEquals("x", list.get(1));
     }
 
     @Test
     void set() {
+        list.set(1, "x");
+        assertEquals(4, list.size());
+        assertEquals("x", list.get(1));
     }
 
     @Test
     void delete() {
+        list.delete();
+        assertEquals(3, list.size());
+        assertEquals("c", list.getLast());
     }
 
     @Test
     void testDelete() {
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
-    void size() {
+        list.delete(1);
+        assertEquals(3, list.size());
+        assertEquals("c", list.get(1));
     }
 
     @Test
     void display() {
+        System.out.println(list.display());
+        assertEquals("[a,b,c,d]", list.display());
     }
 }
