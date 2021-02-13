@@ -3,5 +3,5 @@ package anchor.dataStrcutrue.queue;
 /**
  * @author Anchor
  */
-public class Queue {
+public class NodeQueue<E> {
 }
