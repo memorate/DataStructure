@@ -1,12 +1,14 @@
 package anchor.dataStrcutrue.linkedList;
 
+import anchor.dataStrcutrue.base.DoubleNode;
+
 /**
  * @author Anchor
  */
 public class LinkedList<E> {
     private int size;
-    private Node<E> first;
-    private Node<E> last;
+    private DoubleNode<E> first;
+    private DoubleNode<E> last;
 
     public LinkedList() {
     }
@@ -19,12 +21,12 @@ public class LinkedList<E> {
      */
     public boolean add(E item) {
         if (null == first) {
-            Node<E> node = new Node<>(item, null, null);
+            DoubleNode<E> node = new DoubleNode<>(item, null, null);
             this.first = node;
             this.last = node;
         } else {
-            final Node<E> n = last;
-            Node<E> newNode = new Node<>(item, n, null);
+            final DoubleNode<E> n = last;
+            DoubleNode<E> newNode = new DoubleNode<>(item, n, null);
             this.last = newNode;
             n.next = newNode;
         }
@@ -41,8 +43,8 @@ public class LinkedList<E> {
      * @param item   待插入的值
      */
     public void add(int index, E item) {
-        Node<E> node = getNode(index);
-        Node<E> newNode = new Node<>(item, node.pre, node);
+        DoubleNode<E> node = getNode(index);
+        DoubleNode<E> newNode = new DoubleNode<>(item, node.pre, node);
         node.pre.next = newNode;
         node.pre = newNode;
         size++;
@@ -56,7 +58,7 @@ public class LinkedList<E> {
      * @return 旧值
      */
     public E set(int index, E item) {
-        Node<E> node = getNode(index);
+        DoubleNode<E> node = getNode(index);
         E old = node.item;
         node.item = item;
         return old;
@@ -68,7 +70,7 @@ public class LinkedList<E> {
      * @return 被删除节点的值
      */
     public E delete() {
-        Node<E> oldLast = this.last;
+        DoubleNode<E> oldLast = this.last;
         this.last = oldLast.pre;
         oldLast.pre.next = null;
         size--;
@@ -83,7 +85,7 @@ public class LinkedList<E> {
      */
     public E delete(int index) {
         rangeCheck(index);
-        Node<E> node = getNode(index);
+        DoubleNode<E> node = getNode(index);
         node.pre.next = node.next;
         node.next.pre = node.pre;
         size--;
@@ -134,7 +136,7 @@ public class LinkedList<E> {
         if (size == 0) {
             return "[]";
         }
-        Node<E> n = first;
+        DoubleNode<E> n = first;
         StringBuilder builder = new StringBuilder("[");
         builder.append(n.item);
         while (true) {
@@ -152,10 +154,10 @@ public class LinkedList<E> {
      * @param index  下标，从 0 开始
      * @return 下标所指的 Node
      */
-    private Node<E> getNode(int index) {
+    private DoubleNode<E> getNode(int index) {
         empty();
         rangeCheck(index);
-        Node<E> n;
+        DoubleNode<E> n;
         //根据 index 的位置来决定是顺序查还是逆序查
         if (index < size >> 1) {
             n = first;
@@ -180,18 +182,6 @@ public class LinkedList<E> {
     private void rangeCheck(int index) {
         if (index < 0 || index > size - 1) {
             throw new IndexOutOfBoundsException();
-        }
-    }
-
-    private static class Node<E> {
-        private E item;
-        private Node<E> pre;
-        private Node<E> next;
-
-        public Node(E item, Node<E> pre, Node<E> next) {
-            this.item = item;
-            this.pre = pre;
-            this.next = next;
         }
     }
 }

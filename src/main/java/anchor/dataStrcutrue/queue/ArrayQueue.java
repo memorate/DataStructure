@@ -2,6 +2,8 @@ package anchor.dataStrcutrue.queue;
 
 /**
  * @author Anchor
+ *
+ * 基于数组实现队列
  */
 public class ArrayQueue<E> {
 

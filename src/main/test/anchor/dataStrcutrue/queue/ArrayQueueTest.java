@@ -32,7 +32,7 @@ class ArrayQueueTest {
         queue.pop();
         assertEquals("d", queue.pop());
         assertTrue(queue.isEmpty());
-        assertThrows(IndexOutOfBoundsException.class, () -> queue.pop());
+        assertThrows(IndexOutOfBoundsException.class, queue::pop);
     }
 
     @Test
