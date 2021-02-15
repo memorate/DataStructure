@@ -29,7 +29,7 @@ public class NodeQueue<E> {
      *
      * @param item 入队的元素
      */
-    public void add(E item) {
+    public void push(E item) {
         if (size == 0) {
             first = new SingleNode<>(item, null);
         } else {

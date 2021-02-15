@@ -35,7 +35,7 @@ public class ArrayStack<E> {
      *
      * @param item 入栈的元素
      */
-    public void add(E item) {
+    public void push(E item) {
         full();
         array[size++] = item;
     }

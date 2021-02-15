@@ -3,8 +3,8 @@ Simulate implements for eight kinds of data structure.
 - Array  
 - LinkedList  
 - Queue  
-- Heap  
 - Stack  
+- Heap  
 - Tree  
 - Graph  
 - Hash  

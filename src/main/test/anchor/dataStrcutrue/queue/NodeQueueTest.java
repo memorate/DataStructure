@@ -12,17 +12,17 @@ class NodeQueueTest {
 
     @BeforeEach
     void init() {
-        queue.add("a");
-        queue.add("b");
-        queue.add("c");
-        queue.add("d");
+        queue.push("a");
+        queue.push("b");
+        queue.push("c");
+        queue.push("d");
     }
 
     @Test
-    void add() {
-        queue.add("e");
+    void push() {
+        queue.push("e");
         assertEquals(5, queue.size());
-        queue.add("f");
+        queue.push("f");
         assertEquals("[a,b,c,d,e,f]", queue.display());
     }
 
@@ -30,7 +30,7 @@ class NodeQueueTest {
     void pop() {
         assertEquals("a", queue.pop());
         assertEquals(3, queue.size());
-        queue.add("e");
+        queue.push("e");
         assertEquals("[b,c,d,e]", queue.display());
         queue.pop();
         queue.pop();

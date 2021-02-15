@@ -24,7 +24,7 @@ public class NodeStack<E> {
      *
      * @param item 入栈的元素
      */
-    public void add(E item) {
+    public void push(E item) {
         if (null == last) {
             last = new SingleNode<>(item, null);
         } else {

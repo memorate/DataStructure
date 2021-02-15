@@ -50,7 +50,7 @@ public class ArrayQueue<E> {
      *
      * @param element 添加的元素
      */
-    public void add(E element) {
+    public void push(E element) {
         full();
         array[++end] = element;
         size++;

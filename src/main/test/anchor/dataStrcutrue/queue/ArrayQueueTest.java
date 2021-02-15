@@ -11,17 +11,17 @@ class ArrayQueueTest {
 
     @BeforeEach
     void init() {
-        queue.add("a");
-        queue.add("b");
-        queue.add("c");
-        queue.add("d");
+        queue.push("a");
+        queue.push("b");
+        queue.push("c");
+        queue.push("d");
     }
 
     @Test
-    void add() {
-        queue.add("e");
+    void push() {
+        queue.push("e");
         assertEquals(5, queue.size());
-        assertThrows(IndexOutOfBoundsException.class, () -> queue.add("f"));
+        assertThrows(IndexOutOfBoundsException.class, () -> queue.push("f"));
     }
 
     @Test
@@ -38,11 +38,11 @@ class ArrayQueueTest {
     @Test
     void display() {
         assertEquals("[a,b,c,d]", queue.display());
-        queue.add("e");
+        queue.push("e");
         assertEquals("[a,b,c,d,e]", queue.display());
         queue.pop();
         assertEquals("[b,c,d,e]", queue.display());
-        queue.add("f");
+        queue.push("f");
         assertEquals("[b,c,d,e,f]", queue.display());
     }
 }

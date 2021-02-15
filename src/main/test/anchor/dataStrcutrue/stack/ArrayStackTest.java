@@ -12,24 +12,24 @@ class ArrayStackTest {
 
     @BeforeEach
     void init() {
-        stack.add("a");
-        stack.add("b");
-        stack.add("c");
-        stack.add("d");
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+        stack.push("d");
     }
 
     @Test
-    void add() {
+    void push() {
         assertEquals("[d,c,b,a]", stack.display());
-        stack.add("e");
+        stack.push("e");
         assertEquals(5, stack.size());
-        assertThrows(IndexOutOfBoundsException.class, () -> stack.add("f"));
+        assertThrows(IndexOutOfBoundsException.class, () -> stack.push("f"));
     }
 
     @Test
     void pop() {
         assertEquals("d", stack.pop());
-        stack.add("e");
+        stack.push("e");
         assertEquals("[e,c,b,a]", stack.display());
         assertEquals("e", stack.pop());
         assertEquals("c", stack.pop());
