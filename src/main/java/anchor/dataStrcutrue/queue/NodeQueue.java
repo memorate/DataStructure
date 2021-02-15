@@ -20,7 +20,7 @@ public class NodeQueue<E> {
     private SingleNode<E> first;
 
     /**
-     * 尾节点
+     * 尾节点，SingleNode 中的 node 用来存储下一个元素
      */
     private SingleNode<E> last;
 
@@ -53,7 +53,7 @@ public class NodeQueue<E> {
      * @return 出队的元素
      */
     public E pop() {
-        if (size == 0){
+        if (size == 0) {
             throw new IndexOutOfBoundsException("Queue is empty!");
         }
         E element = first.item;

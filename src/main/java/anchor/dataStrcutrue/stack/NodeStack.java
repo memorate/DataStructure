@@ -15,7 +15,7 @@ public class NodeStack<E> {
     private int size;
 
     /**
-     * 尾结点
+     * 尾结点，SingleNode 中的 node 用来存储上一个元素
      */
     private SingleNode<E> last;
 
