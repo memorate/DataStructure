@@ -4,14 +4,26 @@ import anchor.dataStrcutrue.base.DoubleNode;
 
 /**
  * @author Anchor
+ *
+ * 实现双链表
  */
 public class LinkedList<E> {
+
+    /**
+     * 当前链表中元素个数
+     */
     private int size;
+
+    /**
+     * 双链表的头结点
+     */
     private DoubleNode<E> first;
+
+    /**
+     * 双链表的尾结点
+     */
     private DoubleNode<E> last;
 
-    public LinkedList() {
-    }
 
     /**
      * 在链表尾部插入一个新值
@@ -94,6 +106,7 @@ public class LinkedList<E> {
 
     /**
      * 获取链表中第一个节点的值
+     *
      * @return 首节点的值
      */
     public E getFirst() {
@@ -103,6 +116,7 @@ public class LinkedList<E> {
 
     /**
      * 获取链表中最后一个节点的值
+     *
      * @return 尾节点的值
      */
     public E getLast() {
@@ -130,6 +144,7 @@ public class LinkedList<E> {
 
     /**
      * 以数组的格式展示 LinkedList 中储存的值
+     *
      * @return [0, 1, 2, 3, 4]
      */
     public String display() {

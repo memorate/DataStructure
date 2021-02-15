@@ -6,7 +6,7 @@ import anchor.dataStrcutrue.base.SingleNode;
 /**
  * @author Anchor
  *
- * 基于链表实现队列
+ * 基于单链表实现队列
  */
 public class NodeQueue<E> {
 
@@ -25,6 +25,11 @@ public class NodeQueue<E> {
      */
     private SingleNode<E> last;
 
+    /**
+     * 入队
+     *
+     * @param item 入队的元素
+     */
     public void add(E item) {
         if (size == 0) {
             first = new SingleNode<>(item, null);
@@ -41,6 +46,13 @@ public class NodeQueue<E> {
         size++;
     }
 
+    /**
+     * 出队
+     *
+     * 出队后会删除已出队的元素
+     *
+     * @return 出队的元素
+     */
     public E pop() {
         if (size == 0){
             throw new IndexOutOfBoundsException("Queue is empty!");
@@ -56,6 +68,11 @@ public class NodeQueue<E> {
         return size;
     }
 
+    /**
+     * 以数组的格式展示队列中的值
+     *
+     * @return 例：[a,b,c,d]
+     */
     public String display() {
         StringBuilder builder = new StringBuilder("[");
         SingleNode<E> node = first;

@@ -23,12 +23,11 @@ public class Array<E> {
 
     public Array(int capacity) {
         if (capacity <= 0) {
-            throw new IllegalArgumentException("Array size can not less than 1!");
-        } else {
-            this.capacity = capacity;
-            this.data = new Object[capacity];
-            this.size = 0;
+            throw new IllegalArgumentException("Capacity can not less than 1!");
         }
+        this.capacity = capacity;
+        this.data = new Object[capacity];
+        this.size = 0;
     }
 
     /**
@@ -114,7 +113,7 @@ public class Array<E> {
         return size == 0;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 

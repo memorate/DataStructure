@@ -23,16 +23,19 @@ public class ArrayQueue<E> {
     private final int capacity;
 
     /**
-     * 队列中元素在数组中的起始 index
+     * 队头，出队依赖队头
      */
     private int start;
 
     /**
-     * 队列中元素在数组中的结尾 index
+     * 队尾，入队依赖队尾
      */
     private int end;
 
     public ArrayQueue(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity can not less than 1!");
+        }
         array = new Object[capacity];
         this.capacity = capacity;
         size = 0;
@@ -40,6 +43,13 @@ public class ArrayQueue<E> {
         end = -1;
     }
 
+    /**
+     * 入队
+     *
+     * 当队尾到达数组尾部时，再重新从数组头部开始添加元素
+     *
+     * @param element 添加的元素
+     */
     public void add(E element) {
         full();
         array[++end] = element;
@@ -49,6 +59,13 @@ public class ArrayQueue<E> {
         }
     }
 
+    /**
+     * 出队
+     *
+     * 当队头到达数组尾部时，再重新从数组头部开始出队
+     *
+     * @return 出队的元素
+     */
     @SuppressWarnings("unchecked")
     public E pop() {
         empty();
@@ -70,6 +87,11 @@ public class ArrayQueue<E> {
         return size;
     }
 
+    /**
+     * 展示实际是一次模拟所有元素出队的过程
+     *
+     * @return 以数组的格式返回队列中的元素，例：[a,b,c,d]
+     */
     public String display() {
         int top = start;
         StringBuilder builder = new StringBuilder("[");
