@@ -9,10 +9,10 @@ public class SingleNode<E> {
 
     public E item;
 
-    public SingleNode<E> next;
+    public SingleNode<E> node;
 
-    public SingleNode(E item, SingleNode<E> next) {
+    public SingleNode(E item, SingleNode<E> node) {
         this.item = item;
-        this.next = next;
+        this.node = node;
     }
 }

@@ -1,7 +1,6 @@
 package anchor.dataStrcutrue.queue;
 
 import anchor.dataStrcutrue.base.SingleNode;
-import anchor.dataStrcutrue.base.SingleNode;
 
 /**
  * @author Anchor
@@ -36,10 +35,10 @@ public class NodeQueue<E> {
         } else {
             if (null == last) {
                 last = new SingleNode<>(item, null);
-                first.next = last;
+                first.node = last;
             } else {
                 SingleNode<E> node = new SingleNode<>(item, null);
-                last.next = node;
+                last.node = node;
                 last = node;
             }
         }
@@ -59,7 +58,7 @@ public class NodeQueue<E> {
         }
         E element = first.item;
         first.item = null;
-        first = first.next;
+        first = first.node;
         size--;
         return element;
     }
@@ -83,7 +82,7 @@ public class NodeQueue<E> {
             } else {
                 builder.append(",");
             }
-            node = node.next;
+            node = node.node;
         }
         return builder.toString();
     }
