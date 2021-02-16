@@ -1,4 +1,4 @@
-package anchor.dataStrcutrue.array;
+package anchor.dataStrcutrue.list;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ArrayTest {
 
-    private final Array<String> array = new Array<>(5);
+    private final ArrayList<String> array = new ArrayList<>(5);
 
     @BeforeEach
     void setUp() {

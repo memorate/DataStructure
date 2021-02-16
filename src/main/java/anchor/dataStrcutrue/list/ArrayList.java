@@ -1,11 +1,11 @@
-package anchor.dataStrcutrue.array;
+package anchor.dataStrcutrue.list;
 
 /**
  * @author Anchor
  *
  * 实现一个数组，应有五个方法：增、删、查、改、展示
  */
-public class Array<E> {
+public class ArrayList<E> {
     /**
      * Array 当前的大小
      */
@@ -21,7 +21,7 @@ public class Array<E> {
      */
     private final Object[] data;
 
-    public Array(int capacity) {
+    public ArrayList(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity can not less than 1!");
         }

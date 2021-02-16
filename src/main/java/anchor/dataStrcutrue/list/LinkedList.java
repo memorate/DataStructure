@@ -1,4 +1,4 @@
-package anchor.dataStrcutrue.linkedList;
+package anchor.dataStrcutrue.list;
 
 import anchor.dataStrcutrue.base.DoubleNode;
 
